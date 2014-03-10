@@ -27,12 +27,8 @@ function Announce:Chat(cmd)
 	local args = cmd.text:split(" ")
 
 	if args[1] == "/announce" then
-		for k, v in pairs(self.users) do
-			user = v
-			if not string.match(user, tostring(target:GetSteamId())) then
-				return false
-			end
-			return true
+		if not self:Admin(cmd.player) then
+			return
 		end
 
 		local time = tonumber(args[2])
