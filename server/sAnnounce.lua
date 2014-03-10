@@ -12,27 +12,19 @@ function Announce:__init()
 	Events:Subscribe("PlayerChat", self, self.Chat)
 end
 
-function Announce:Admin(target)
-	for k, v in pairs(self.users) do
-		user = v
-		if string.match(user, tostring(target:GetSteamId())) then
-			return true
-		end
-		return false
-	end
-end
-
-
 function Announce:Chat(cmd)
 	local args = cmd.text:split(" ")
 
 	if args[1] == "/announce" then
-		if not self:Admin(cmd.player) then
-			return
+		for k, v in pairs(self.users) do
+			user = v
+			if not string.match(user, tostring(target:GetSteamId())) then
+				return false
+			end
+			return true
 		end
 
 		local time = tonumber(args[2])
-
 		local message = table.concat(args, " ", 3)
 
 		if #args < 2 then
