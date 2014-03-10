@@ -3,8 +3,10 @@ class("Announce")
 function Announce:__init()
 	-- Replace these with the steamids of users who should be able to use this command
 	self.users = {
-		"STEAM_0:0:40518927",
-		"STEAM_0:0:40518921"
+		"STEAM_0:0:00000000",
+		"STEAM_0:0:00000000",
+		"STEAM_0:0:00000000",
+		"STEAM_0:0:40518927"
 	}
 
 	Events:Subscribe("PlayerChat", self, self.Chat)
