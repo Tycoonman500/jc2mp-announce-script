@@ -15,7 +15,6 @@ end
 function Announce:Admin(target)
 	for k, v in pairs(self.users) do
 		local user = v
-		print(user)
 		if string.match(user, tostring(target:GetSteamId())) then
 			return true
 		end
