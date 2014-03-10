@@ -40,6 +40,8 @@ function Announce:Chat(cmd)
 		local time = math.clamp(time, 0.1, 5*60)
 		Network:Broadcast("Announce", {time, message, color})
 		return false
+	elseif not args[2] then
+		Chat:Send(args.player, "Syntax: /announce time message", Color(128, 128, 255))
 	end
 end
 
